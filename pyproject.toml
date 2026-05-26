@@ -5,7 +5,7 @@ requires = ["uv_build>=0.8"]
 build-backend = "uv_build"
 
 [project]
-name = "python-template"
+name = "data-structures-and-algorithms"
 version = "0.0.0"
 description = ""
 authors = [{name = "billwallis"}]
@@ -28,12 +28,16 @@ test = [
 [tool.uv]
 required-version = ">=0.8"
 default-groups = "all"
-#package = false
+package = true
 
-#[tool.uv.build-backend]
-#module-name = "src"
-#module-root = ""
-#namespace = true
+[tool.uv.workspace]
+members = ["projects/*"]
+exclude = ["projects/__pycache__"]
+
+[tool.uv.sources]
+
+[tool.uv.build-backend]
+namespace = true
 
 
 [tool.poe]
@@ -50,6 +54,12 @@ upgrade.shell = """
     uv run pre-commit autoupdate
 """
 test = "uv run pytest -vvv"
+add.shell = """
+    uv run -m tools.add ${name}
+"""
+add.args = [
+    {name = "name", positional = true, required = true},
+]
 
 [tool.poe.tasks.lint]
 control.expr = "sys.platform"
@@ -73,8 +83,8 @@ shell = """
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src"
-testpaths = ["tests"]
+addopts = "--cov=projects"
+testpaths = ["projects/*/tests"]
 
 [tool.coverage]
 run.branch = true
@@ -120,7 +130,7 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 # https://github.com/astral-sh/ruff/issues/4368
 [tool.ruff.lint.extend-per-file-ignores]
-"tests/**/*.py" = [
+"projects/*/tests/**/*.py" = [
     "ANN001",   # Missing type annotation for function argument
     "ANN201",   # Missing return type annotation for public function
     "S101",     # Use of `assert` detected
