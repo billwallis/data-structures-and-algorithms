@@ -99,6 +99,9 @@ wheels = [
 name = "data-structures-and-algorithms"
 version = "0.0.0"
 source = { editable = "." }
+dependencies = [
+    { name = "soundex" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -111,6 +114,7 @@ test = [
 ]
 
 [package.metadata]
+requires-dist = [{ name = "soundex", editable = "projects/soundex" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -323,7 +327,7 @@ wheels = [
 [[package]]
 name = "soundex"
 version = "0.0.0"
-source = { virtual = "projects/soundex" }
+source = { editable = "projects/soundex" }
 
 [[package]]
 name = "virtualenv"
