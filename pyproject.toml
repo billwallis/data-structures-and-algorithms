@@ -12,7 +12,9 @@ authors = [{name = "billwallis"}]
 readme = "README.md"
 license-files = ["LICENSE"]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "soundex",
+]
 
 [dependency-groups]
 dev = [
@@ -35,6 +37,7 @@ members = ["projects/*"]
 exclude = ["projects/__pycache__"]
 
 [tool.uv.sources]
+soundex = {workspace = true}
 
 [tool.uv.build-backend]
 namespace = true
