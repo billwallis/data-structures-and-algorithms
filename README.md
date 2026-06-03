@@ -14,6 +14,8 @@
 
 # Data structures and algorithms
 
+DSA in Python, just for funsies.
+
 ## Quick start
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and then install the dependencies:
