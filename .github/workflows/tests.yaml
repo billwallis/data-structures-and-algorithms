@@ -24,4 +24,7 @@ jobs:
         run: pip install --editable . --requirement requirements.txt --group test
 
       - name: ✅ Run unit tests
-        run: pytest -vvv --color yes
+        run: |
+          coverage run -m pytest -vvv --color yes
+          coverage report --no-skip-covered --include 'projects/*/tests/*' --fail-under 100
+          coverage report --no-skip-covered --include 'projects/*/src/*'
