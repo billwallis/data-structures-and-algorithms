@@ -44,7 +44,7 @@ repos:
     hooks:
       - id: banned-python-code
       - id: check-filename-pattern
-        files: '^tests/.*\.py$'
+        files: '^projects/.*/tests/.*\.py$'
         exclude: '^.*/(conftest|__init__)\.py$'
         args: ["--name-only", "--regex", '^test__.*\.py$']
       - id: check-github-codeowners

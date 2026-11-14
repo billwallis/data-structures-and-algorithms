@@ -20,6 +20,6 @@ DSA in Python, just for funsies.
 Install the dependencies:
 
 ```shell
-pip install --editable . --group dev --group test
+pip install --editable . --requirement requirements.txt --group dev --group test
 pre-commit install --install-hooks
 ```
