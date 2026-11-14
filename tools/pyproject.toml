@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://json.schemastore.org/pyproject.json
+
+[project]
+name = "tools"
+version = "0.0.0"
+dependencies = [
+    "tomlkit>=0.15.0",
+]
+scripts.add = "tools.add:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
